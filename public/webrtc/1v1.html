@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/socket.io/4.4.0/socket.io.min.js"></script>
+  </head>
+  <body>
+      <div id="app">
+
+      </div>
+    <script>
+      var webrtcIO = io.connect("wss://192.168.0.107:8000/webrtc");
+
+      webrtcIO.on("connect", function () {
+          console.log('connect success')
+        app.innerHTML='connect success'
+        // chat.emit("hi!");
+      });
+      /*
+      由于webrtc只能在https工作所以node 配置ssl证书 开启https服务
+      网页在https下 websocket 用 wss连接，为了能局域网下手机和电脑调试，用nginx 反向代理wss到ws
+      */ 
+    </script>
+  </body>
+</html>
