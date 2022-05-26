@@ -15,7 +15,7 @@ function getRecommendList() {
         if (err) {
           // return next(err);
           reject();
-          console.log("页面不存在", err);
+          // console.log("页面不存在", err);
         }
         let html = data.text,
           $ = cheerio.load(html, {
@@ -34,7 +34,7 @@ function getRecommendList() {
 
         var str = $("script")[3].children[0].data;
         arr = "[" + str.split("window.__INITIAL_DATA__ =")[1] + "]";
-        console.log("----", typeof eval(arr));
+        // console.log("----", typeof eval(arr));
         resolve();
         // cheerio的使用类似jquery的操作
         // $("table tbody").each((index, element) => {

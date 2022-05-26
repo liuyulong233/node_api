@@ -1,3 +1,5 @@
+//路径别名
+require("module-alias/register");
 const Koa = require("koa"),
   Router = require("koa-router"),
   cheerio = require("cheerio"),
@@ -8,8 +10,7 @@ const Koa = require("koa"),
 const config = require("@/config/index.js");
 const cors = require("koa2-cors");
 const bodyParser = require("koa-bodyparser"); //解析post参数
-//路径别名
-require("module-alias/register");
+
 //错误处理
 app.use(async (ctx, next) => {
   return next().catch((err) => {
@@ -21,23 +22,13 @@ app.use(async (ctx, next) => {
       message: err.message || "错误",
     };
   });
-  // try {
-  //   await next();
-  // } catch (err) {
-  //   console.log("err",err);
-  //   ctx.status = 200;
-  //   ctx.body ={
-  //     code:err.status,
-  //     message:err.message||"错误"
-  //   }
-  // }
+ 
 });
 //使用中间件
 app.use(cors());
 app.use(bodyParser());
-
-let api = require("./routes/index.js");
-router.use("/api", api.routes());
+const music = require("@/routes/music.js");
+router.use("/api/music", music.routes());
 app.use(router.routes()).use(router.allowedMethods());
 app.on("error", (err, next) => {
   console.error("server error", err);

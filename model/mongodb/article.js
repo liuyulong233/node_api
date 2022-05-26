@@ -1,4 +1,4 @@
-var mongoose = require('../db/db.js');
+var mongoose = require('./db.js');
 var Schema = mongoose.Schema;
 const dayjs = require('dayjs')
 // console.log(dayjs().format('YYYY-MM-DD HH:mm:ss'))

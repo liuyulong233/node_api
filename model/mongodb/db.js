@@ -1,11 +1,11 @@
 var mongoose = require("mongoose");
+var config = require("@/config/index.js").db;
 // const uri = "mongodb://user:password@localhost:27017/social";
-const uri = "mongodb://user:password@175.178.33.148:3001/social";
+const url=`mongodb://${config.username}:${config.password}@${config.uri}`
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
-mongoose.set("useFindAndModify", false);
 mongoose.connect(uri, options).then(
   () => {
     console.log("数据库已连接");

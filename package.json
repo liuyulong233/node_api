@@ -17,15 +17,24 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
     "koa-mount": "^4.0.0",
     "koa-router": "^10.1.1",
     "koa-static": "^5.0.0",
     "koa2-cors": "^2.0.6",
+    "module-alias": "^2.2.2",
     "mongoose": "^6.2.9",
     "multer": "^1.4.4",
     "socket.io": "^4.4.1",
     "superagent": "^7.1.1",
     "superagent-charset": "^1.2.0",
     "svg-captcha": "^1.4.0"
+  },
+  "_moduleAliases": {
+    "@": ".",
+    "@c": "controller/",
+    "@r": "routes/",
+    "@m": "model/",
+    "@j": "joi/"
   }
 }
