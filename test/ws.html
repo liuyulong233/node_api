@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/socket.io/4.4.1/socket.io.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+     //命名空间 多路由技术仅仅只需要建立一个连接
+      const manager = new io.Manager("http://192.168.0.107:3000");
+
+      const chatSocket = manager.socket("/chat"); // chat namespace
+      const gameSocket = manager.socket("/game"); // game namespace
+
+      chatSocket.on("connect", function () {
+        console.log("connect success chat");
+      });
+      gameSocket.on("connect", function () {
+        console.log("connect success game");
+      });
+     
+    </script>
+  </body>
+</html>

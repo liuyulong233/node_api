@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var config = require("@/config/index.js").db;
 // const uri = "mongodb://user:password@localhost:27017/social";
-const url=`mongodb://${config.username}:${config.password}@${config.uri}`
+const uri=`mongodb://${config.username}:${config.password}@${config.uri}`
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,

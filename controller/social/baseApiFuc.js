@@ -36,10 +36,13 @@ class BaseApi {
     //       });
     //   });
   }
-  async _list(value = {}, page = 1, page_size = 10) {
+  async _list(value = {}, page = 1, page_size = 10, fields = "") {
     let offset = (page - 1) * page_size;
     try {
-      let data = await this.Model.find(value).skip(offset).limit(page_size);
+      let data = await this.Model.find(value)
+        .select(fields)
+        .skip(offset)
+        .limit(page_size);
       const count = await this.Model.find(value).countDocuments();
       return {
         code: 200,
@@ -59,18 +62,18 @@ class BaseApi {
       };
     }
   }
-  async _edit(value1, value2,flag=true) {
+  async _edit(value1, value2, flag = true) {
     try {
       let data = await this.Model.findOneAndUpdate(value1, value2);
       return {
         code: 200,
-        message:flag? "编辑成功":"删除成功",
+        message: flag ? "编辑成功" : "删除成功",
       };
     } catch (error) {
       console.log(this.modelName, error);
       return {
         code: 500,
-        message: this.modelName + `${flag? "修改失败":"删除失败"}::` + error,
+        message: this.modelName + `${flag ? "修改失败" : "删除失败"}::` + error,
       };
     }
     //   .then((data) => {
@@ -90,19 +93,38 @@ class BaseApi {
     //       });
     //   });
   }
-  async _editById(id, value2,flag=true) {
+  async _editById(id, value2, flag = true) {
     try {
       let data = await this.Model.findByIdAndUpdate(id, value2);
       return {
         code: 200,
-        message:flag? "编辑成功":"删除成功",
+        message: flag ? "编辑成功" : "删除成功",
       };
     } catch (error) {
       console.log(this.modelName, error);
       return {
         code: 500,
-        message: this.modelName + `${flag? "修改失败":"删除失败"}::` + error,
+        message: this.modelName + `${flag ? "修改失败" : "删除失败"}::` + error,
       };
+    }
+  }
+  //
+  async _editByAuth(value1, value2, limitAuth,flag = true) {
+    //可以横向越权
+    if (!limitAuth) {
+      return this._editById(value1._id,value2,flag)
+    }else{
+      return this._edit(value1,value2,flag)
+    }
+
+   
+  }
+  async _detailByAuth(value,limitAuth) {
+    //可以横向越权
+    if (!limitAuth) {
+      return this._detailById(value._id)
+    }else{
+      return this._detail(value)
     }
   }
   async _detail(value) {
@@ -114,7 +136,7 @@ class BaseApi {
         message: "ok",
       };
     } catch (error) {
-      console.log('err',this.modelName, error);
+      console.log("err", this.modelName, error);
       return {
         code: 500,
         message: this.modelName + "获取详情失败::" + error,
@@ -130,7 +152,7 @@ class BaseApi {
         message: "ok",
       };
     } catch (error) {
-      console.log('err',this.modelName, error);
+      console.log("err", this.modelName, error);
       return {
         code: 500,
         message: this.modelName + "获取详情失败::" + error,
@@ -138,8 +160,6 @@ class BaseApi {
     }
   }
   //真删除
-  async remove(id){
-  }
-
+  async remove(id) {}
 }
 module.exports = BaseApi;

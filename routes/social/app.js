@@ -1,0 +1,85 @@
+const Router = require("koa-router");
+let router = new Router();
+// const controller= require("@c/social/app/index.js")
+const userController= require('@c/social/app/user.js')
+// const followController = require('@c/social/app/follow')
+// const likeController = require('@c/social/app/like')
+// const dynamicController= require('@c/social/app/dynamic')
+// const commentController= require('@c/social/app/comment')
+// const articleController= require('@c/social/app/article')
+// const reportController= require('@c/social/app/report')
+const collectController= require('@c/social/app/collect')
+const upgradeController= require('@c/social/app/upgrade')
+// const topicController= require('@c/social/app/topic')
+
+//我的 mine
+//获取我的 动态 文章 关注 粉丝 数量数据
+// router.get('/mine', controller.getMine);
+// //获取个人主页 动态列表数据
+// router.get('/mine/dynamic', dynamicController.query);
+// //获取个人主页 文章列表数据
+// router.get('/mine/article', articleController.query);
+// //获取个人主页 关注/粉丝列表数据
+// router.get('/mine/follow', followController.query);
+// //关注/取关
+// router.post('/user/follow', followController.save);
+//获取用户个人资料
+router.get('/user/profile', userController.detail);
+//修改个人资料
+router.post('/user/edit', userController.edit);   
+//获取动态详情数据
+// router.get('/dynamic/detail', dynamicController.detail);
+// //获取文章详情数据
+// router.get('/article/detail', articleController.detail);
+// //删除动态
+// router.get('/dynamic/remove', dynamicController.remove);
+// //删除文章
+// router.get('/article/remove', articleController.remove);
+// //发布动态
+// router.post('/dynamic/add', dynamicController.save);
+// //发布文章
+// router.post('/article/add', articleController.save);
+// //修改文章
+// router.post('/article/edit', articleController.edit);
+// //修改动态
+// router.post('/dynamic/edit', dynamicController.edit);
+//获取我的收藏列表
+router.get('/collect/list', collectController.query);
+router.get('/upgrade', upgradeController.queryUpgrade);
+//修改密码 邮箱 手机
+router.post('/bind/:type', userController.bind);
+// //home 首页
+// //获取首页 动态列表数据
+// router.get('/dynamic', dynamicController.query);
+// //获取首页 文章列表数据
+// router.get('/article', articleController.query);
+// //获取评论列表
+// router.get('/comment', commentController.query);
+// //发布评论
+// router.post('/comment/add', commentController.save);
+// router.get('/comment/detail', commentController.detail);
+// //删除评论
+// router.post('/comment/remove', commentController.remove);
+// //置顶
+// router.post('/comment/top', commentController.top);
+// //举报
+// router.post('/report', reportController.save);
+//收藏/取消
+router.post('/collect', collectController.add);
+// //点赞/取消
+// router.post('/like', likeController.save);
+// //创建话题
+// router.post('/topic/add', topicController.save);
+// //编辑话题
+// // router.post('/topic/edit', topicController.edit);
+// //话题列表
+// router.get('/topics', topicController.query);
+// //话题详情
+// router.get('/topic/detail', topicController.detail);
+// //话题下的动态
+// router.get('/topic/dynamic', topicController.findDynamics);
+// //根据动态id找话题id
+// router.get('/topic_id', topicController.findTopicByDynamic);
+//搜索 
+// router.post('/search', loginController.edit);
+module.exports= router

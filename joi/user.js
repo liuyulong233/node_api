@@ -34,6 +34,7 @@ const bindSchema = Joi.object({
 	})
 })
 const addSchema = Joi.object({
+	uid: Joi.number().required(),
 	code: Joi.string().required(),
 	mobile: Joi.string(), //手机
 	nickname: Joi.string().required(),//昵称
@@ -48,7 +49,7 @@ const addSchema = Joi.object({
 	birthday: Joi.string(),//
 	photos: Joi.array().items(Joi.string()),//照片墙
 	status: Joi.number().default(1).valid(0, 1, 2),//0-注销 1正常使用 2禁用 
-})
+}).unknown()
 
 const pageSchema = Joi.object({
 	status: Joi.number().valid(0, 1,2).empty([null]),
@@ -61,6 +62,7 @@ const registerSchema = Joi.object({
 	code: Joi.string().required(),
 	mobile: Joi.string(), //手机
 	nickname: Joi.string().required(),//昵称
+	uid: Joi.number().required(),
 	avatar: Joi.string(),//头像
 	password: Joi.string().required(), //密码
 	email: Joi.string(), //邮箱
@@ -71,7 +73,7 @@ const registerSchema = Joi.object({
 	sex: Joi.number().default(2).valid(0, 1, 2),//0 女 1 男 2未知
 	birthday: Joi.string(),//
 	photos: Joi.array().items(Joi.string()),//照片墙
-})
+}).unknown()
 const detailSchema = Joi.object({
 	uid: Joi.number().required(),
 })

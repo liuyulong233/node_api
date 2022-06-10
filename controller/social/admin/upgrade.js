@@ -1,7 +1,8 @@
 const assert = require("http-assert");
-const { adminSchema } = require("@j/category");
+const filename=__filename.slice(__dirname.length + 1, -3)
+const { adminSchema } = require("@j/"+filename);
 const Base = require("../baseApiFuc");
-const admin = new Base("category");
+const admin = new Base(filename);
 
 //分类
 async function add(ctx) {

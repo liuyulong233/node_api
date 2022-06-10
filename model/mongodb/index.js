@@ -1,17 +1,19 @@
 
 // models
-// const Menu =require('./menu')
-// const Role =require('./role')
-// const permission =require('./permission')
-// const Uid =require('./uidPool')
-// const User =require('./user')
-// const dynamic =require('./dynamic')
+const menu =require('./menu')
+const role =require('./role')
+const permission =require('./permission')
+const uid =require('./uidPool')
+const user =require('./user')
+const upgrade =require('./upgrade')
+const config =require('./config')
+const dynamic =require('./dynamic')
 // const comment =require('./comment')
 const category =require('./category')
 // const report =require('./report')
 // const article =require('./article')
-// const collect =require('./collect')
-// const Code =require('./code')
+const collect =require('./collect')
+const code =require('./code')
 // const follow =require('./follow')
 // const like =require('./like')
 
@@ -22,18 +24,20 @@ const category =require('./category')
 // const member =require('./member')
 // const conversation =require('./conversation')
 module.exports= {
-	// Menu,
-	// Role,
-	// permission,
-	// Uid,
-	// User,
-	// Code,
-	// dynamic,
+	menu,
+	role,
+	permission,
+	uid,
+	user,
+	code,
+	upgrade,
+	config,
+	dynamic,
 	// comment,
 	category,
 	// report,
 	// article,
-	// collect,
+	collect,
 	// follow,
 	// like,
 	// group,
