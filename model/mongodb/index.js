@@ -8,21 +8,21 @@ const user =require('./user')
 const upgrade =require('./upgrade')
 const config =require('./config')
 const dynamic =require('./dynamic')
-// const comment =require('./comment')
+const comment =require('./comment')
 const category =require('./category')
-// const report =require('./report')
-// const article =require('./article')
+const report =require('./report')
+const article =require('./article')
 const collect =require('./collect')
 const code =require('./code')
-// const follow =require('./follow')
-// const like =require('./like')
+const follow =require('./follow')
+const like =require('./like')
 
-// const group =require('./group')
-// const groupMessage =require('./groupMessage')
-// const single_message =require('./single_message')
-// const join_notice =require('./join_notice')
-// const member =require('./member')
-// const conversation =require('./conversation')
+const group =require('./group')
+const groupMessage =require('./groupMessage')
+const single_message =require('./single_message')
+const notice =require('./join_notice')
+const member =require('./member')
+const conversation =require('./conversation')
 module.exports= {
 	menu,
 	role,
@@ -33,17 +33,17 @@ module.exports= {
 	upgrade,
 	config,
 	dynamic,
-	// comment,
+	comment,
 	category,
-	// report,
-	// article,
+	report,
+	article,
 	collect,
-	// follow,
-	// like,
-	// group,
-	// groupMessage,
-	// join_notice,
-	// member,
-	// conversation,
-	// single_message
+	follow,
+	like,
+	group,
+	groupMessage,
+	notice,
+	member,
+	conversation,
+	single_message
 }

@@ -28,7 +28,7 @@ const httpServer = http.createServer(app.callback());
 // wss链接
 // const httpServer = https.createServer(credentials,app.callback());
 httpServer.listen(port, ip,() => {
-  console.log("ws-server is running on ws://%s:%s", ip, port);
+  console.log("ws-server is running on wss://%s:%s", ip, port);
 });
 const options = {
   cors: true,

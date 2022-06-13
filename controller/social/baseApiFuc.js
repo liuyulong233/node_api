@@ -109,22 +109,20 @@ class BaseApi {
     }
   }
   //
-  async _editByAuth(value1, value2, limitAuth,flag = true) {
+  async _editByAuth(value1, value2, limitAuth, flag = true) {
     //可以横向越权
     if (!limitAuth) {
-      return this._editById(value1._id,value2,flag)
-    }else{
-      return this._edit(value1,value2,flag)
+      return this._editById(value1._id, value2, flag);
+    } else {
+      return this._edit(value1, value2, flag);
     }
-
-   
   }
-  async _detailByAuth(value,limitAuth) {
+  async _detailByAuth(value, limitAuth) {
     //可以横向越权
     if (!limitAuth) {
-      return this._detailById(value._id)
-    }else{
-      return this._detail(value)
+      return this._detailById(value._id);
+    } else {
+      return this._detail(value);
     }
   }
   async _detail(value) {
@@ -160,6 +158,43 @@ class BaseApi {
     }
   }
   //真删除
-  async remove(id) {}
+  async _remove(value) {
+    try {
+      await this.Model.findOneAndRemove(value);
+      return {
+        code: 200,
+        message: "删除成功",
+      };
+    } catch {
+      console.log("err", this.modelName, error);
+      return {
+        code: 500,
+        message: this.modelName + "删除失败::" + error,
+      };
+    }
+  }
+  async _removeById(id) {
+    try {
+      await this.Model.findByIdAndRemove(id);
+      return {
+        code: 200,
+        message: "删除成功",
+      };
+    } catch (error) {
+      console.log("err", this.modelName, error);
+      return {
+        code: 500,
+        message: this.modelName + "删除失败::" + error,
+      };
+    }
+  }
+  async _removeByAuth(value, limitAuth ) {
+    //可以横向越权
+    if (!limitAuth) {
+      return this._removeById(value._id);
+    } else {
+      return this._remove(value);
+    }
+  }
 }
 module.exports = BaseApi;

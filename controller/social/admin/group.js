@@ -1,4 +1,4 @@
-//对于没有归属者的数据（分类，菜单等）管理端页面有新增按钮
+
 
 const assert = require("http-assert");
 const filename = __filename.slice(__dirname.length + 1, -3);
@@ -18,13 +18,13 @@ async function add(ctx) {
 async function list(ctx) {
   let { value, error } = adminSchema.page.validate(ctx.query);
   assert(!error, 405, error);
-  let { page, page_size,uid,type,status
+  let { page, page_size,uid
   } = value;
   
   let _filter = {
      uid: ctx.state.limit ? ctx.state.uid : uid,
-    type,
-    status
+    // type,
+    // status
   }
   
   for (let key in _filter) {

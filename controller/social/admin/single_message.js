@@ -18,13 +18,13 @@ async function add(ctx) {
 async function list(ctx) {
   let { value, error } = adminSchema.page.validate(ctx.query);
   assert(!error, 405, error);
-  let { page, page_size,uid,type,status
+  let { page, page_size,uid,type,accounts
   } = value;
   
   let _filter = {
-     uid: ctx.state.limit ? ctx.state.uid : uid,
+    fromAccount: ctx.state.limit ? ctx.state.uid : uid,
     type,
-    status
+    accounts
   }
   
   for (let key in _filter) {

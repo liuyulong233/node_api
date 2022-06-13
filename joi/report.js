@@ -7,7 +7,7 @@ const addSchema = Joi.object({
     uid: Joi.number(),//举报者
     reason: Joi.string(),//举报原因
     photo: Joi.array().items(Joi.string()),//举报图片
-    status:Joi.number().valid(0, 1)//0-未处理 1-已处理
+    status:Joi.number().valid(0, 1).default(0)//0-未处理 1-已处理
 })
 const editSchema = Joi.object({
     _id: Joi.string().required(),

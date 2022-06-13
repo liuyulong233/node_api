@@ -7,6 +7,10 @@ const roleController = require("@c/social/admin/role.js");
 const permissionController = require("@c/social/admin/permission.js");
 const upgradeController = require("@c/social/admin/upgrade.js");
 const dynamicController = require("@c/social/admin/dynamic.js");
+const articleController = require("@c/social/admin/article.js");
+const commentController = require("@c/social/admin/comment.js");
+const configController = require("@c/social/admin/config.js");
+const reportController = require("@c/social/admin/report.js");
 global.userMap = new Map();
 let router = new Router();
 router.post("/category/add", categoryController.add);
@@ -53,6 +57,36 @@ router.post("/dynamic/edit", dynamicController.edit);
 router.get("/dynamic/list", dynamicController.list);
 router.get("/dynamic/remove", dynamicController.remove);
 router.get("/dynamic/detail", dynamicController.detail);
+
+router.post("/article/add", articleController.add);
+router.post("/article/edit", articleController.edit);
+router.get("/article/list", articleController.list);
+router.get("/article/remove", articleController.remove);
+router.get("/article/detail", articleController.detail);
+router.post("/article/check", articleController.check);
+
+router.post("/comment/add", commentController.add);
+router.post("/comment/edit", commentController.edit);
+router.get("/comment/list", commentController.list);
+router.get("/comment/remove", commentController.remove);
+router.get("/comment/detail", commentController.detail);
+
+router.post("/report/add", reportController.add);
+router.post("/report/edit", reportController.edit);
+router.get("/report/list", reportController.list);
+router.get("/report/remove", reportController.remove);
+router.get("/report/detail", reportController.detail);
+
+router.post("/config/add", configController.add);
+router.post("/config/edit", configController.edit);
+router.get("/config/list", configController.list);
+router.get("/config/remove", configController.remove);
+router.get("/config/detail", configController.detail);
+
+
+
+
+
 
 
 

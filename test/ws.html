@@ -12,19 +12,30 @@
     <div id="app"></div>
 
     <script>
-     //命名空间 多路由技术仅仅只需要建立一个连接
-      const manager = new io.Manager("http://192.168.0.107:3000");
+      //命名空间 多路由技术仅仅只需要建立一个连接
+      // const manager = new io.Manager("https://192.168.0.107");
 
-      const chatSocket = manager.socket("/chat"); // chat namespace
-      const gameSocket = manager.socket("/game"); // game namespace
+      // const chatSocket = manager.socket("/chat"); // chat namespace
+      // const gameSocket = manager.socket("/game"); // game namespace
 
-      chatSocket.on("connect", function () {
+      // chatSocket.on("connect", function () {
+      //   console.log("connect success chat");
+      // });
+      // gameSocket.on("connect", function () {
+      //   console.log("connect success game");
+      // });
+      // let socket =io("wss://ws.domain.com");
+      let uri='wss://liuyulong.xyz?option=%7B%22uid%22%3A%223A5F7A863E042753%22%2C%22hasLogin%22%3Afalse%7D&EIO=4&transport=websocket' 
+      let socket =io(uri);
+      socket.on("connect", function () {
         console.log("connect success chat");
       });
-      gameSocket.on("connect", function () {
-        console.log("connect success game");
-      });
-     
+      /*
+      
+      file,http协议下 可使用wss/ws wss 可用域名/ip访问
+      https下 使用wss
+      
+      */
     </script>
   </body>
 </html>
