@@ -21,7 +21,7 @@ const pageSchema = Joi.object({
 	page_size: Joi.number().default(10).error(new Error('数字类型')),
 })
 const pageSchema2 = Joi.object({
-	uid: Joi.string().required(),
+	uid: Joi.any().required(),
 	type: Joi.number().valid(1, 2, 3).empty([null]),
 	page: Joi.number().default(1).error(new Error('数字类型')),
 	page_size: Joi.number().default(10).error(new Error('数字类型')),

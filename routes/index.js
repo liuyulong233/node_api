@@ -10,7 +10,7 @@ const test = require("./test.js");
 router.use("/music", music.routes());
 router.post("/login",login);
 router.post("/register",register);
-// router.use("/admin",Auth('admin'),adminApiAuth, admin.routes());
+router.use("/admin",Auth('admin'),adminApiAuth, admin.routes());
 router.use("/app",Auth('app'), app.routes());
 router.use("/err", test.routes());
 module.exports=router

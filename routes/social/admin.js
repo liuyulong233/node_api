@@ -83,14 +83,6 @@ router.get("/config/list", configController.list);
 router.get("/config/remove", configController.remove);
 router.get("/config/detail", configController.detail);
 
-
-
-
-
-
-
-
-
 // router.post("/code/add",codeController.add);
 router.post("/user/edit", userController.edit);
 router.get("/user/list", userController.list);
@@ -107,4 +99,5 @@ async function permissionByRole(ctx) {
     message: "ok",
   };
 }
+
 module.exports = router;

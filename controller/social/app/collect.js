@@ -91,32 +91,33 @@ const query = async (ctx) => {
           ..._filter,
         },
       },
+      {
+        $lookup: {
+          from: tableMap[type],
+          localField: "topic_id",
+          foreignField: "_id",
+          as: "topic",
+        },
+      },
+      { $unwind: "$topic" },
       // {
       //   $lookup: {
-      //     from: tableMap[type],
+      //     from: "articles",
       //     localField: "topic_id",
       //     foreignField: "_id",
-      //     as: "topic",
+      //     as: "article",
       //   },
       // },
-      {
-        $lookup: {
-          from: "articles",
-          localField: "topic_id",
-          foreignField: "_id",
-          as: "article",
-        },
-      },
-      {
-        $lookup: {
-          from: "dynamics",
-          localField: "topic_id",
-          foreignField: "_id",
-          as: "dynamic",
-        },
-      },
-      { $unwind: "$dynamic" },
-      { $unwind: "$article" },
+      // {
+      //   $lookup: {
+      //     from: "dynamics",
+      //     localField: "topic_id",
+      //     foreignField: "_id",
+      //     as: "dynamic",
+      //   },
+      // },
+      // { $unwind: "$dynamic" },
+      // { $unwind: "$article" },
      
     ])
       .skip(offset)

@@ -6,7 +6,7 @@ module.exports = {
   db:{
     username:"user",
     password:"password",
-    // uri:"175.178.33.148:3001/social"
-    uri:'localhost:27017/social'
+    uri:"175.178.33.148:3001/social"
+    // uri:'localhost:27017/social'
   }
 };

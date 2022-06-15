@@ -11,8 +11,8 @@ const addSchema = Joi.object({
 }).unknown();
 const editSchema = Joi.object({
   _id: Joi.string().required(),
-  cover: Joi.string().required(), //
-  desc: Joi.string().required(), //
+  cover: Joi.string(), //
+  desc: Joi.string(), //
 }).unknown();
 const pageSchema = Joi.object({
   page: Joi.number().default(1).error(new Error("数字类型")),

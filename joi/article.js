@@ -58,6 +58,8 @@ module.exports =  {
 		check:checkSchema
 	},
 	appSchema:{
+		add:addSchema,
+		edit:editSchema,
 		page:pageSchema1,
 	}
 }

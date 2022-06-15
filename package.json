@@ -28,7 +28,8 @@
     "socket.io": "^4.4.1",
     "superagent": "^7.1.1",
     "superagent-charset": "^1.2.0",
-    "svg-captcha": "^1.4.0"
+    "svg-captcha": "^1.4.0",
+    "xss": "^1.0.13"
   },
   "_moduleAliases": {
     "@": ".",

@@ -16,7 +16,7 @@ const collect =require('./collect')
 const code =require('./code')
 const follow =require('./follow')
 const like =require('./like')
-
+const topic =require('./topic')
 const group =require('./group')
 const groupMessage =require('./groupMessage')
 const single_message =require('./single_message')
@@ -45,5 +45,6 @@ module.exports= {
 	notice,
 	member,
 	conversation,
-	single_message
+	single_message,
+	topic
 }

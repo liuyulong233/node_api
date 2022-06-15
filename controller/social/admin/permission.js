@@ -76,8 +76,6 @@ async function remove(ctx) {
     message: "删除成功",
   };
 }
-//获取权限菜单
-async function getPermissionByRolefn(ctx) {}
 let o = {
   add,
   list,

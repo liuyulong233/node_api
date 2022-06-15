@@ -4,7 +4,7 @@ class BaseApi {
     this.modelName = modelName;
     this.Model = models[modelName];
   }
-  async _create(value, res) {
+  async _create(value) {
     try {
       let data = await this.Model.create(value);
       return {
