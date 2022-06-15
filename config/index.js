@@ -1,6 +1,6 @@
 module.exports = {
   ip:"127.0.0.1",
-  port:3001,
+  port:3000,
   tokenSecret:"liuyulong233",
   ws_port:3002,
   db:{

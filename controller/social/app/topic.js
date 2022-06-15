@@ -170,14 +170,14 @@ module.exports = {
   edit,
   getDynamicByTopic,
 };
-//查询不一致？？
-async function test() {
-  let _filter = {
-    status: 1,
-    topic:null ,
-    is_public: 1,
-  };
-  const count = await dynamicModel.find(_filter).countDocuments();
-  console.log(count)
-}
-test()
+// //查询不一致？？
+// async function test() {
+//   let _filter = {
+//     status: 1,
+//     topic:null ,
+//     is_public: 1,
+//   };
+//   const count = await dynamicModel.find(_filter).countDocuments();
+//   console.log(count)
+// }
+// test()

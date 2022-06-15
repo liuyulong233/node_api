@@ -1,5 +1,6 @@
 const Router = require("koa-router");
 let router = new Router();
+const upload = require('./upload');
 // const controller= require("@c/social/app/index.js")
 const userController= require('@c/social/app/user.js')
 const followController = require('@c/social/app/follow')
@@ -82,6 +83,20 @@ router.get('/topic/dynamic', topicController.getDynamicByTopic);
 // router.get('/topic_id', topicController.findTopicByDynamic);
 //搜索 
 // router.post('/search', loginController.edit);
+
+//文件上传
+
+router.post('/upload',upload.single('file'),async(ctx)=>{
+  console.log('abc',ctx.request.file)
+  ctx.body = {
+    code:200,
+    data: {
+      url:'/static'+ctx.request.file.destination.slice(6)+ctx.request.file.filename
+    },
+    message:"上传成功"
+  }
+})
+
 async function getMine(ctx) {
     try {
       let data = {};

@@ -38,7 +38,7 @@ app.use(async (ctx, next) => {
 //使用中间件
 app.use(cors());
 app.use(bodyParser());
-app.use(mount("/", statics(path.join(__dirname, "./public"))));
+app.use(mount("/static", statics(path.join(__dirname, "./public"))));
 let api = require("./routes/index.js");
 router.use("/api", api.routes());
 app.use(router.routes()).use(router.allowedMethods());
