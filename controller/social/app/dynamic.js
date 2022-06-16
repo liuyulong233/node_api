@@ -194,6 +194,7 @@ const detail = async (ctx) => {
       },
       { $unwind: "$user" },
     ]);
+    data = data[0];
     //登录用户查看动态详情，可看是否关注过，点赞，收藏
     if (ctx.state && ctx.state.uid) {
       let uid = ctx.state.uid;
