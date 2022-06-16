@@ -41,7 +41,7 @@
       { status: 2 }
     )
       .then((doc) => {
-        console.log("doc,", doc);
+        // console.log("doc,", doc);
       })
       .catch((err) => {
         console.log("err", err);
