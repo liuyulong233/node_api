@@ -1,5 +1,5 @@
 const Router = require("koa-router");
-const { getSinger, getRecommend,getLyric,getVkey } = require("../controller/music");
+const { getSinger, getRecommend,getLyric,getVkey,getBannner } = require("../controller/music");
 let router = new Router();
 var arr;
 router.get("/recommendList", async (ctx, next) => {
@@ -55,6 +55,7 @@ router.get("/lyric", async (ctx, next) => {
     data: res,
   };
 });
+router.get("/banner", getBannner);
 router.get("/getVkey", async (ctx, next) => {
   let res = await getVkey(ctx.query.mid);
   res = JSON.parse(res);

@@ -1,8 +1,13 @@
 const cheerio = require("cheerio");
 const charset = require("superagent-charset");
 const superagent = charset(require("superagent"));
-
+var koa2Req = require('koa2-request');
 //
+async function getBannner(ctx){
+  var res = await koa2Req('http://123.207.32.32:9001/banner');
+  ctx.response.type = "application/json; charset=utf-8";
+  ctx.body = res.body;
+}
 function getRecommendList() {
   return new Promise((resolve, reject) => {
     url = "https://y.qq.com/"; //target地址
@@ -168,4 +173,5 @@ module.exports = {
   getRecommend,
   getLyric,
   getVkey,
+  getBannner
 };

@@ -23,6 +23,7 @@
     "koa-router": "^10.1.1",
     "koa-static": "^5.0.0",
     "koa2-cors": "^2.0.6",
+    "koa2-request": "^1.0.4",
     "module-alias": "^2.2.2",
     "mongoose": "^6.2.9",
     "multer": "^1.4.4",
