@@ -52,7 +52,7 @@ const add = async (ctx) => {
       ctx.body = {
         code: 200,
         data: {
-          isCollect: data.status == 0,
+          iscollect: data.status == 0?true:false,
         },
         message: data.status == 0 ? "收藏成功" : "取消收藏",
       };

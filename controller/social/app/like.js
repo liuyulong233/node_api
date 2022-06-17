@@ -23,7 +23,7 @@ const add = async (ctx) => {
       ctx.body = {
         code: 200,
         data: {
-          isLike: true,
+          islike: true,
         },
         message: "成功",
       };

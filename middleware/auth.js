@@ -19,15 +19,22 @@ async function checkToken(ctx, next) {
       try {
         info = jwt.verify(token, config.tokenSecret);
       } catch (error) {
-        //无效token
-        assert(false, 400, "token无效，请重新登录！" + error);
+        if (whiteListByAuth.includes(ctx.path)) {
+          await next();
+        }else{
+           //无效token
+          assert(false, 400, "token无效，请重新登录！" + error);
+        }
+       
       }
       // 判断token是否快过期，是则
-  // 生成新的token
-  // const newToken = genToken(user);
-  //将新token放入Authorization中返回给前端
-  
-  // ctx.res.setHeader('Authorization', newToken);
+      // 生成新的token
+      // const newToken = genToken(user);
+      //将新token放入Authorization中返回给前端
+
+      // ctx.res.setHeader('Authorization', newToken);
+      //全局要记录用户是否登录过
+      // console.log(info)
       let user = await userModel.findOne({ uid: info.uid });
       assert(user, 400, "未知token，请先登录！");
       assert(user.status != 0, 400, "账号已注销");
@@ -36,11 +43,19 @@ async function checkToken(ctx, next) {
       ctx.state.user = user;
       await next();
     } else {
-      assert(false, 400, "token无效，请重新登录！");
+      if (whiteListByAuth.includes(ctx.path)) {
+        await next();
+      }else{
+         assert(false, 400, "token无效，请重新登录！");
+      }
+     
     }
   }
 }
-
+let whiteListByAuth=[
+  "/dynamic/detail",//如果用户未登录，不能看到关注状态
+  "/article/detail",//业务场景是，用户没登录前，可以看文章列表，文章有浏览量，点赞数显示，用户登录后，高亮显示当前用户点赞过的文章
+]
 module.exports = function (model = "admin") {
   if (model === "admin") {
     base = "/api/admin";
@@ -49,14 +64,14 @@ module.exports = function (model = "admin") {
     base = "/api/app";
     whiteList = [
       "/upgrade",
+      "/config",
       "/dynamic",
       "/article",
       "/comment",
-      "/dynamic/detail",
-      "/article/detail",
       "/topics",
     ];
   }
   whiteList = whiteList.map((item) => base + item);
+  whiteListByAuth = whiteListByAuth.map((item) => base + item);
   return checkToken;
 };

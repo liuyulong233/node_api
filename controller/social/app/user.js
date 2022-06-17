@@ -6,6 +6,7 @@ const Base = require("../baseApiFuc");
 const user = new Base(filename);
 //编辑个人信息
 const edit = async (ctx) => {
+  ctx.request.body.uid=ctx.state.uid
   let { value, error } = appSchema.edit.validate(ctx.request.body);
   assert(!error, 405, error);
   const obj = await user._edit({ uid: ctx.state.uid }, value);

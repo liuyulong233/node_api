@@ -1,5 +1,5 @@
 const assert = require("http-assert");
-require("module-alias/register");
+// require("module-alias/register");
 const { dynamic: dynamicModel } = require("@m/mongodb/index.js");
 const filename = __filename.slice(__dirname.length + 1, -3);
 const { appSchema } = require("@j/" + filename);

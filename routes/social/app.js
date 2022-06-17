@@ -12,9 +12,13 @@ const reportController= require('@c/social/app/report')
 const collectController= require('@c/social/app/collect')
 const upgradeController= require('@c/social/app/upgrade')
 const topicController= require('@c/social/app/topic')
+const configController= require('@c/social/app/config')
 
+////查询个人/系统配置
+router.get('/config', configController.query);
 //我的 mine
 //获取我的 动态 文章 关注 粉丝 数量数据
+
 router.get('/mine', getMine);
 // //获取个人主页 动态列表数据
 router.get('/mine/dynamic', dynamicController.query);

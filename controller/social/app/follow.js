@@ -21,7 +21,7 @@ const add = async (ctx) => {
       ctx.body = {
         code: 200,
         data: {
-          isFollow: true,
+          isfollow: true,
         },
         message: "关注成功",
       };
