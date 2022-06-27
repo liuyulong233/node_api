@@ -15,3 +15,4 @@ http://www.imxmx.com/Item/1/85808.html
 ### mongodb 如何聚合查询 a联b,b联c  
 ### mongodb 聚合查询分页
 ### 话题下查询动态需要改进
+### Nginx 出现 413 Request Entity Too Large的解决方法

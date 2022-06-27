@@ -50,7 +50,7 @@ async function remove(ctx) {
   };
 }
 //获取权限菜单
-async function getPermissionByRole(role) {
+async function getPermissionByRole(role,detail=false) {
   if (role == "superAdmin") {
     let obj = {
       permission: {},
@@ -58,14 +58,19 @@ async function getPermissionByRole(role) {
       role_id: "superAdmin",
       comment: "超级管理员权限最高者",
     };
+    let map={}
     let permission = await permissionModel.find({});
     for (let i of permission) {
       if (!obj["permission"].hasOwnProperty(i.resource_id)) {
         obj["permission"][i.resource_id] = [];
       }
       obj["permission"][i.resource_id].push(i.operation);
+      map[i.resource_id+'_'+i.operation]=i
     }
-
+    if(detail){
+      obj.permissionList=map;
+    }
+    
     return obj;
   }
   let res = await admin.Model.aggregate([
@@ -86,13 +91,17 @@ async function getPermissionByRole(role) {
   ]);
   let roleInfo = res[0];
   let obj = {};
-
+  let map={}
   if (roleInfo && roleInfo.permission) {
     for (let i of roleInfo.permission) {
       if (!obj.hasOwnProperty(i.resource_id)) {
         obj[i.resource_id] = [];
       }
       obj[i.resource_id].push(i.operation);
+      map[i.resource_id+'_'+i.operation]=i
+    }
+    if(detail){
+      roleInfo.permissionList=map;
     }
     roleInfo.permission = obj;
     // console.log(roleInfo);

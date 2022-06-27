@@ -26,11 +26,10 @@ var storage = multer.diskStorage({
     console.log("filename", ctx.file);
     //获取后缀名
     const extname = path.extname(file.originalname);
-    cb(null, Date.now() + extname);
+    cb(null, Date.now()+'-'+file.originalname + extname);
   },
   fileFilter: function (req, file, cb) {
-    // 限制文件上传类型，仅可上传png格式图片
-
+    // 限制文件上传类型
     if (mimetypes.includes(file.mimetype)) {
       cb(null, true);
     } else {
@@ -41,7 +40,7 @@ var storage = multer.diskStorage({
 //如果你未创建文件上传需要保存的文件夹或文件，使用dest时，会根据dest配置的路径自动创建，但是如果使用storage，必须确保文件夹或文件是否存在，否则会报错！
 //加载配置
 const limit = {
-  fileSize: 30 * 1024 * 1024, //b 30M
+  fileSize: 50 * 1024 * 1024, //b 30M
 };
 var upload = multer({ storage, limit });
 module.exports = upload;

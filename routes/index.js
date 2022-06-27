@@ -15,4 +15,5 @@ router.get('/verifyCode', codeController.add);
 router.use("/admin",Auth('admin'),adminApiAuth, admin.routes());
 router.use("/app",Auth('app'), app.routes());
 router.use("/err", test.routes());
+
 module.exports=router

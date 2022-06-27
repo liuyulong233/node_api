@@ -91,7 +91,7 @@ router.get("/user/detail", userController.detail);
 
 async function permissionByRole(ctx) {
   let data = await roleController.getPermissionByRole(
-    ctx.query.role || ctx.state.user.role
+    ctx.query.role || ctx.state.user.role,!!ctx.query.detail
   );
   ctx.body = {
     code: 200,
