@@ -7,7 +7,7 @@ const addSchema = Joi.object({
 	content: Joi.string().max(800).required(),//内容
 	like: Joi.number().default(0),//点赞数量
 	comment: Joi.number().default(0),//评论数量
-	topic:Joi.string().empty([null]),
+	topic:Joi.string().empty([null]),//主题
 	address: Joi.string().max(80).empty([null, '']),//地址
 	album: Joi.array().items(Joi.string()),//图片
 	is_public: Joi.number().valid(0, 1).default(1),//是否公开 1 公开 0 私密 

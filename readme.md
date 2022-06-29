@@ -9,7 +9,8 @@
 - admin  
 社交项目管理端接口
 ## 初始化
-certificate 目录下的https证书未上传，请自行获取
+certificate 目录下的https证书未上传，请自行获取  
+
 config 目录下配置文件未上传
 ```index.js
 module.exports = {

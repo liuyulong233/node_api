@@ -25,7 +25,7 @@ const pageSchema = Joi.object({
 const pageSchema2 = Joi.object({
     group_id: Joi.string().required(),
     page: Joi.number().default(1).error(new Error('数字类型')),
-    page_size: Joi.number().default(10).error(new Error('数字类型')),
+    page_size: Joi.number().default(50).error(new Error('数字类型')),
 })
 module.exports = {
     adminSchema: {

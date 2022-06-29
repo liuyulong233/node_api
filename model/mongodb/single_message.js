@@ -7,7 +7,7 @@ var schema = new Schema({
     timestamp:{type:Number},
     fromAccount:{type:Number},
     toAccount:{type:Number},
-    accounts: { type: Array },//单聊双方UID 从小到大存储
+    accounts: { type: String },//单聊双方UID 从小到大存储
     status:{type:Number},
     create_at: { type: String, default:()=> dayjs().format('YYYY-MM-DD HH:mm:ss') }
 },{versionKey:false});

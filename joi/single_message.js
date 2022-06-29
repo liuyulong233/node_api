@@ -5,7 +5,7 @@ const addSchema = Joi.object({
     timestamp:Joi.number(),
     fromAccount:Joi.number(),
     toAccount:Joi.number(),
-    accounts: Joi.array(),//单聊双方UID 从小到大存储
+    accounts: Joi.string(),//单聊双方UID 从小到大存储
     status:Joi.number().default(1),
 })
 const editSchema = Joi.object({
@@ -14,20 +14,20 @@ const editSchema = Joi.object({
     timestamp:Joi.number(),
     fromAccount:Joi.number(),
     toAccount:Joi.number(),
-    accounts: Joi.array(),//单聊双方UID 从小到大存储
+    accounts: Joi.string(),//单聊双方UID 从小到大存储
     _id:Joi.string().empty([null]),
 }).unknown()
 const pageSchema = Joi.object({
-    accounts:Joi.array().empty([null]),
+    accounts:Joi.string().empty([null]),
     uid:Joi.number().empty([null]),
     type:Joi.string().empty([null]),
     page: Joi.number().default(1).error(new Error('数字类型')),
     page_size: Joi.number().default(10).error(new Error('数字类型')),
 })
 const pageSchema2 = Joi.object({
-    accounts:Joi.array().required(),
+    accounts:Joi.string().required(),
     page: Joi.number().default(1).error(new Error('数字类型')),
-    page_size: Joi.number().default(10).error(new Error('数字类型')),
+    page_size: Joi.number().default(50).error(new Error('数字类型')),
 })
 module.exports = {
     adminSchema: {
