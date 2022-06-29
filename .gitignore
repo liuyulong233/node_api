@@ -5,6 +5,7 @@ bin-release/
 [Bb]in/
 node_modules/
 certificate/
+config/
 public/
 # Other files and folders
 .settings/

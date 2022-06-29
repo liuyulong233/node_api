@@ -10,6 +10,7 @@ const editSchema = Joi.object({
     status: Joi.number(),
     group_id: Joi.string(),//群ID
     nickname: Joi.string(),//群中昵称
+    name: Joi.string(),//群别名
     uid: Joi.number()
 }).unknown()
 
