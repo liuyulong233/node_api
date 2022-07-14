@@ -40,6 +40,7 @@ class BaseApi {
     let offset = (page - 1) * page_size;
     try {
       let data = await this.Model.find(value)
+        .sort("-create_at")
         .select(fields)
         .skip(offset)
         .limit(page_size);
@@ -188,7 +189,7 @@ class BaseApi {
       };
     }
   }
-  async _removeByAuth(value, limitAuth ) {
+  async _removeByAuth(value, limitAuth) {
     //可以横向越权
     if (!limitAuth) {
       return this._removeById(value._id);
