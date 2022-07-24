@@ -58,18 +58,29 @@ async function updateComments(value) {
   if (value.type == 1) {
     //评论数量
     let count = await getTopicCommentCount(value.topic_id);
-    dynamic.findByIdAndUpdate(value.topic_id, { comment: count });
+    console.log('动态评论数',count,value.topic_id)
+    dynamic.findByIdAndUpdate(value.topic_id, { comment: count },function(err,doc){
+      console.log(err,doc)
+    })
+    
     if (value.pid) {
       let reply_count = await getReplyCommentCount(value.topic_id, value.pid);
-      app.Model.findByIdAndUpdate(value.topic_id, { reply_count });
+      console.log('评论回复数',reply_count,value.pid)
+      app.Model.findByIdAndUpdate(value.pid, { reply_count }).exec((err,doc)=>{
+        console.log(err)
+      })
     }
   }
   if (value.type == 2) {
     let count = await getTopicCommentCount(value.topic_id);
-    article.findByIdAndUpdate(value.topic_id, { comment: count });
+    article.findByIdAndUpdate(value.topic_id, { comment: count }).exec((err,doc)=>{
+      console.log(err)
+    })
     if (value.pid) {
       let reply_count = await getReplyCommentCount(value.topic_id, value.pid);
-      app.Model.findByIdAndUpdate(value.topic_id, { reply_count });
+      app.Model.findByIdAndUpdate(value.pid, { reply_count }).exec((err,doc)=>{
+        console.log(err)
+      });
     }
   }
 }
