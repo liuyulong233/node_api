@@ -13,7 +13,7 @@ const collectController= require('@c/social/app/collect')
 const upgradeController= require('@c/social/app/upgrade')
 const topicController= require('@c/social/app/topic')
 const configController= require('@c/social/app/config')
-
+const userController2 = require("@c/social/admin/user.js");
 ////查询个人/系统配置
 router.get('/config', configController.query);
 //我的 mine
@@ -32,6 +32,8 @@ router.post('/user/follow', followController.add);
 router.get('/user/profile', userController.detail);
 //修改个人资料
 router.post('/user/edit', userController.edit);   
+//注销
+router.post('/user/logout', userController2.logOut); 
 //获取动态详情数据
 router.get('/dynamic/detail', dynamicController.detail);
 //获取文章详情数据

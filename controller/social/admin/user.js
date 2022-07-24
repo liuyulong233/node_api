@@ -127,7 +127,7 @@ const editStatus = async (uid, status) => {
   return Model.findOneAndUpdate({ uid }, { status });
 };
 //注销
-async function loginOut(ctx) {
+async function logOut(ctx) {
   assert(ctx.query.uid, 422, "uid参数缺失");
   if (ctx.state.uid != ctx.query.uid) {
     assert(null, 422, "无权注销");
@@ -153,7 +153,7 @@ let o = {
   list,
   edit,
   detail,
-  loginOut,
+  logOut,
   genToken
 };
 module.exports = o;

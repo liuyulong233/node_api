@@ -4,8 +4,8 @@ const Base = require("../baseApiFuc");
 const app = new Base(filename);
 const Joi = require("joi");
 const pageSchema = Joi.object({
-    type:Joi.string().valid('system','user').default('system'),//system系统配置 user 用户配置
-    uid: Joi.number().when('type', { is: 'user', then:  Joi.number().required() }),
+    // type:Joi.string().valid('system','user').default('system'),//system系统配置 user 用户配置
+    // uid: Joi.number().when('type', { is: 'user', then:  Joi.number().required() }),
     platform:Joi.string().valid('web','app','mp-weixin').default('app'),//平台配置，app || mp-weixin
   }).unknown();
 const query = async (ctx) => {
@@ -18,8 +18,9 @@ const query = async (ctx) => {
         
       let sys_config = await app.Model.findOne({type:'system',platform:value.platform});
       let user_config={};
-      if(value.uid&&value.type=='user'){
-        user_config = await app.Model.findOne(value);
+      // console.log(ctx.state.uid)
+      if(ctx.state&&ctx.state.uid){
+        user_config = await app.Model.findOne({type:'user',platform:value.platform,uid:ctx.state.uid});
       }
       ctx.body = {
         code: 200,

@@ -263,7 +263,6 @@ const detail = async (ctx) => {
     // 因为要得到被回复人的nickname uid 
     let map = {};
     data = data.map((item) => {
-      item.user = item.user[0];
       map[item._id] = item;
       return item;
     });

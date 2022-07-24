@@ -59,12 +59,13 @@ module.exports = function (model = "admin") {
   } else {
     base = "/api/app";
     whiteListByAuth = [
+      "/config",
       "/dynamic/detail", //如果用户未登录，不能看到关注状态
       "/article/detail", //业务场景是，用户没登录前，可以看文章列表，文章有浏览量，点赞数显示，用户登录后，高亮显示当前用户点赞过的文章
     ];
     whiteList = [
       "/upgrade",
-      "/config",
+      //
       "/dynamic",
       "/article",
       "/comment",
