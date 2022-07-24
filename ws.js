@@ -1,3 +1,5 @@
+//路径别名
+require("module-alias/register")
 const Koa = require("koa");
 const {Server} = require("socket.io");
 const config = require("./config/index.js");

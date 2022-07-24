@@ -9,13 +9,15 @@ const Auth = require("@/middleware/auth.js");
 const adminApiAuth = require("@/middleware/api-auth.js");
 const {login,register} = require("@c/social/admin/user.js");
 const test = require("./test.js");
+const admiAuth=Auth('admin');
+const appAuth=Auth('app');
 router.use("/music", music.routes());
 router.post("/login",login);
 router.post("/register",register);
 router.get('/verifyCode', codeController.add);
-router.use("/admin",Auth('admin'),adminApiAuth, admin.routes());
-router.use("/app",Auth('app'), app.routes());
-router.use("/chat",Auth('app'), chat.routes());
+router.use("/admin",admiAuth,adminApiAuth, admin.routes());
+router.use("/app",appAuth, app.routes());
+router.use("/chat",appAuth, chat.routes());
 router.use("/err", test.routes());
 
 module.exports=router
