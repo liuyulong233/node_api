@@ -60,10 +60,14 @@ const add = async (ctx) => {
 function updateLikeCount(data, type) {
   let num = data.status == 0 ? 1 : -1;
   if (type == 1) {
-    dynamic.findByIdAndUpdate(data.topic_id, { $inc: { collect: num } });
+    dynamic.findByIdAndUpdate(data.topic_id, { $inc: { collect: num } }).exec((err,doc)=>{
+      console.log(err)
+    });
   }
   if (type == 2) {
-    article.findByIdAndUpdate(data.topic_id, { $inc: { collect: num } });
+    article.findByIdAndUpdate(data.topic_id, { $inc: { collect: num } }).exec((err,doc)=>{
+      console.log(err)
+    });;
   }
 }
 //查看点赞列表

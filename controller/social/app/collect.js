@@ -44,10 +44,14 @@ const add = async (ctx) => {
       });
       let num = data.status == 0 ? 1 : -1;
       if (type == 1) {
-        dynamic.findByIdAndUpdate(data.topic_id, { $inc: { collect: num } });
+        dynamic.findByIdAndUpdate(data.topic_id, { $inc: { collect: num } }).exec((err,doc)=>{
+          console.log(err)
+        });;
       }
       if (type == 2) {
-        article.findByIdAndUpdate(data.topic_id, { $inc: { collect: num } });
+        article.findByIdAndUpdate(data.topic_id, { $inc: { collect: num } }).exec((err,doc)=>{
+          console.log(err)
+        });;
       }
       ctx.body = {
         code: 200,

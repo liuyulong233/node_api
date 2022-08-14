@@ -8,6 +8,7 @@ let mimetypes = [
   "image/webp",
   "application/vnd.android.package-archive",
   "application/widget",
+  "application/zip"
 ];
 var storage = multer.diskStorage({
   //文件保存路径
@@ -25,8 +26,8 @@ var storage = multer.diskStorage({
   filename: function (ctx, file, cb) {
     console.log("filename", ctx.file);
     //获取后缀名
-    const extname = path.extname(file.originalname);
-    cb(null, Date.now()+'-'+file.originalname + extname);
+    // const extname = path.extname(file.originalname);
+    cb(null, Date.now()+'-'+file.originalname);
   },
   fileFilter: function (req, file, cb) {
     // 限制文件上传类型
